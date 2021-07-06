@@ -14,14 +14,14 @@ A repo for NextJS course live-coding session
   - [ ] Navbar
   - [ ] Aside ?
 - [ ] Définir des composants ?
-  - [ ] Buttons ?
-  - [ ] Inputs ?
+  - [X] Buttons ?
+  - [X] Inputs ?
 
 ### Pages 🛣️
 
 - [ ] Accueil (Login/Register et si déjà authentifié, redirige vers Timeline) 
 - [ ] Timeline
-- [ ] Créer un tweet
+- [X] Créer un tweet
 - [ ] Voir un tweet
 
 

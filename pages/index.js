@@ -1,12 +1,16 @@
 import { Button } from "../components/Button";
 import firebase from "../lib/firebase.config";
 import Link from "next/link"
+import { TweetComponent } from "../components/Tweet";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Home({ tweets = [] }) {
+  const {user} = useAuth();
+  console.log(user)
   return (
-    <div className="flex flex-col space-y-3">
+    <div className="flex flex-col p-12 space-y-3">
       {tweets.map((el) => (
-        <div>{JSON.stringify(el)}</div>
+        <TweetComponent {...el} />
       ))}
       <Link href="/create">
         <Button className="mt-4">Créer un tweet</Button>

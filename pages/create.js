@@ -2,14 +2,16 @@ import { useState } from "react";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import firebase from "../lib/firebase.config";
+import { useAuth } from "../hooks/useAuth";
 
 export default function CreateTweetPage() {
   const [content, setContent] = useState("");
+  const {user} = useAuth()
 
   const sendTweet = async () => {
     const tweet = await firebase.firestore().collection("tweets").add({
       content,
-      creator: "test",
+      creator: user.email,
       date: new Date(),
     });
   };
