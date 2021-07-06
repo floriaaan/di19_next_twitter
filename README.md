@@ -10,19 +10,15 @@ A repo for NextJS course live-coding session
 ### UI/UX 🎨
 
 - [ ] Créer une page de test de composants ? Storybook ?
-- [ ] Creér un layout
-  - [ ] Navbar
-  - [ ] Aside ?
-- [ ] Définir des composants ?
-  - [X] Buttons ?
-  - [X] Inputs ?
+- [X] Creér un layout
+  - [X] Navbar
+  - [X] Aside ?
 
 ### Pages 🛣️
 
-- [ ] Accueil (Login/Register et si déjà authentifié, redirige vers Timeline) 
-- [ ] Timeline
+- [X] Timeline
 - [X] Créer un tweet
-- [ ] Voir un tweet
+- [X] Voir un tweet
 
 
 ### Déploiement 🧑‍💻
