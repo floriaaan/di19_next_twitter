@@ -14,7 +14,6 @@ export const TweetComponent = ({ content, creator, date, id }) => {
       .collection("users")
       .doc(creator)
       .get();
-    console.log(creatorDoc);
     const data = creatorDoc.data();
     setPhotoUrl(data.photoUrl);
     setEmail("@" + data.email.replace("@gmail.com", ""));
