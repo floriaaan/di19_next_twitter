@@ -11,7 +11,7 @@ export async function getServerSideProps(ctx) {
   const { id } = ctx.query;
 
   const doc = await firebase.firestore().collection("tweets").doc(id).get();
-  console.log(doc);
+  console.log(doc.data());
   const docdata = { ...doc.data() };
 
   return {

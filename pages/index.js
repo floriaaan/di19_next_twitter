@@ -1,38 +1,30 @@
-import { Button } from "../components/Button";
 import firebase from "../lib/firebase.config";
-import Link from "next/link"
 import { TweetComponent } from "../components/Tweet";
-import { useAuth } from "../hooks/useAuth";
+import { useEffect, useState } from "react";
 
-export default function Home({ tweets = [] }) {
-  const {user} = useAuth();
-  console.log(user)
-  return (
-    <div className="flex flex-col p-12 space-y-3">
-      {tweets.map((el) => (
-        <TweetComponent {...el} />
-      ))}
-      <Link href="/create">
-        <Button className="mt-4">Créer un tweet</Button>
-      </Link>
-    </div>
-  );
-}
-
-export async function getServerSideProps(ctx) {
-  let _tmp = [];
-  await firebase
-    .firestore()
-    .collection("tweets")
-    .orderBy("date", "desc")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        _tmp.push({ id: doc.id, ...doc.data() });
+export default function Home() {
+  const [tweets, setTweets] = useState([]);
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("tweets")
+      .orderBy("date", "desc")
+      .onSnapshot((querySnapshot) => {
+        let _tmp = [];
+        querySnapshot.forEach((doc) => {
+          _tmp.push({ id: doc.id, ...doc.data() });
+        });
+        setTweets(_tmp);
       });
-    });
+  }, []);
 
-  return { props: { tweets: JSON.parse(JSON.stringify(_tmp)) } };
+  return (
+    <>
+      {tweets.map((el, key) => (
+        <TweetComponent {...el} key={key} />
+      ))}
+    </>
+  );
 }
 
 // export default function Home({ test }) {
