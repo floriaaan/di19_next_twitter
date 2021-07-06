@@ -3,7 +3,7 @@ A repo for NextJS course live-coding session
 
 ### Initialisation du projet NEXT 🦾
 
-- [ ] NextJS : `npx create-next-app app`
+- [X] NextJS : `npx create-next-app .`
 - [ ] TailwindCSS : [Guide](https://tailwindcss.com/docs/guides/nextjs)
 - [ ] Firebase : [Lien](https://firebase.google.com/)
 
