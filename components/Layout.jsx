@@ -12,13 +12,17 @@ export const Layout = ({ children }) => {
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const sendTweet = async () => {
+  const sendTweet = async (e) => {
+    e.preventDefault();
     setLoading(true);
-    const tweet = await firebase.firestore().collection("tweets").add({
-      content,
-      creator: user.uid,
-      date: new Date(),
-    });
+
+    if (content !== "") {
+      const tweet = await firebase.firestore().collection("tweets").add({
+        content,
+        creator: user.uid,
+        date: new Date(),
+      });
+    }
 
     setLoading(false);
     setContent("");
@@ -282,7 +286,7 @@ export const Layout = ({ children }) => {
                   <hr className="border-gray-800" />
                   {/*middle creat tweet*/}
                   {user && (
-                    <>
+                    <form onSubmit={sendTweet}>
                       <div className="flex">
                         <div className="w-10 py-1 m-2">
                           <img
@@ -412,7 +416,7 @@ export const Layout = ({ children }) => {
                           </button>
                         </div>
                       </div>
-                    </>
+                    </form>
                   )}
                   <hr className="border-4 border-gray-800" />
                 </aside>
