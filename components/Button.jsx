@@ -6,7 +6,7 @@ export const Button = ({
 }) => (
   <button
     className={
-      "flex items-center justify-center h-12 transition duration-300 rounded-full focus:outline-none " +
+      "flex items-center justify-center py-2 px-4 transition duration-300 rounded-full focus:outline-none " +
       colorsClassName + " " + className
     }
     onClick={onClick}

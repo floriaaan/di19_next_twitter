@@ -24,6 +24,7 @@ export async function getServerSideProps(ctx) {
   await firebase
     .firestore()
     .collection("tweets")
+    .orderBy("date", "desc")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
