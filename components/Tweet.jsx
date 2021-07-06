@@ -17,7 +17,7 @@ export const TweetComponent = ({ content, creator, date, id }) => {
     console.log(creatorDoc);
     const data = creatorDoc.data();
     setPhotoUrl(data.photoUrl);
-    setEmail(data.email);
+    setEmail("@" + data.email.replace("@gmail.com", ""));
     setFullname(data.fullname);
   };
 
@@ -45,9 +45,13 @@ export const TweetComponent = ({ content, creator, date, id }) => {
                       {email}
                       {date
                         ? " . " +
-                        formatDistance(new Date(
-                          JSON.parse(JSON.stringify(date)).seconds * 1000
-                        ), new Date(), { addSuffix: true })
+                          formatDistance(
+                            new Date(
+                              JSON.parse(JSON.stringify(date)).seconds * 1000
+                            ),
+                            new Date(),
+                            { addSuffix: true }
+                          )
                         : null}
                     </span>
                   </p>
